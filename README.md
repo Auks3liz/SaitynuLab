@@ -30,6 +30,7 @@ Projekto ‚Frontend‘ bus kuriamas su React technologija. Duomenų bazė – P
 ## 3.3 Prisijungimo forma
 ### Wireframe
 ![image](https://github.com/user-attachments/assets/392b6bbf-d83b-46e1-8d45-b3ce29507fe0)
+
 Panašaus principo wireframe pritaikomas ir registracijai, tačiau atsiranda papildomas email langas
 
 ### Realus pavyzdys (prisijungimas)
@@ -41,6 +42,7 @@ Panašaus principo wireframe pritaikomas ir registracijai, tačiau atsiranda pap
 ## 3.4 Prisijungimo forma
 ### Wireframe
 ![image](https://github.com/user-attachments/assets/495ce9eb-9e30-4ed9-8866-5a66cc54ff7d)
+
 Panašaus principo wireframe pritaikomas ir kitiems kūrumo/redagavimo langams
 
 ### Realus pavyzdys (kuriamas naujas meal)
