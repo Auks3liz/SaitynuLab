@@ -239,15 +239,13 @@ DELETE http://localhost:5000/api/meals/32
 Status 204
 ```
 
-
-
-
+---
 
 ## Recipies
 
 ### GET /api/meals/{mealid}/recipies
 
-Fetches a list of meals.
+Fetches a list of recipies.
 
 ### Resource Information:
 
@@ -298,7 +296,7 @@ Status 200
 
 ### GET /api/meals/{mealid}/recipies/{recipid}
 
-Fetches details for a specific meal.
+Fetches details for a specific recipie.
 
 ### Resource Information:
 
@@ -329,7 +327,7 @@ Status 200
 
 ### POST  /api/meals/{mealid}/recipies
 
-Creates a new meal.
+Creates a new recipie.
 
 ### Resource Information:
 
@@ -369,7 +367,7 @@ Status 201
 
 ### PUT  /api/meals/{mealid}/recipies/{recipid}
 
-Updates the description of an existing meal.
+Updates the description of an existing recipie.
 
 ### Resource Information:
 
@@ -408,7 +406,7 @@ Status 200
 
 ### DELETE  /api/meals/{mealid}/recipies/{recipid}
 
-Deletes a specific meal.
+Deletes a specific recipie.
 
 ### Resource Information:
 
@@ -421,6 +419,176 @@ Deletes a specific meal.
 
 ```http
 DELETE http://localhost:5000/api/meals/32
+```
+
+### Response
+
+```http
+Status 204
+```
+
+---
+
+## Comments
+
+### GET /api/meals/{mealid}/recipies/{recipieid}/comments
+
+Fetches a list of comments.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals/22/recipies/9/comments
+```
+
+### Response
+
+```http
+Status 200
+[
+    {
+        "id": 20,
+        "content": "LABAI GERAS RECEPTAS, 10/10",
+        "creationDate": "2024-12-12T16:14:15.146574Z"
+    },
+    {
+        "id": 21,
+        "content": "O MAN NELABAI PATIKO, FUJ",
+        "creationDate": "2024-12-12T16:14:22.318522Z"
+    }
+]
+```
+
+---
+
+### GET /api/meals/{mealid}/recipies/{recipieid}/comments/{commentid}
+
+Fetches details for a specific comment.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals/22/recipies/9/comments/20
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 20,
+    "content": "LABAI GERAS RECEPTAS, 10/10",
+    "creationDate": "2024-12-12T16:14:15.146574Z"
+}
+```
+
+---
+
+### POST  /api/meals/{mealid}/recipies/{recipieid}/comments
+
+Creates a new comment.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Body:
+
+```http
+{
+    "content": "Fuj neskanu"
+}
+```
+
+### Example Request:
+
+```http
+POST http://localhost:5000/api/meals/22/recipies/9/comments
+```
+
+### Response
+
+```http
+Status 201
+{
+    "id": 22,
+    "content": "Fuj neskanu",
+    "creationDate": "2024-12-12T17:27:01.5560578Z"
+}
+```
+
+---
+
+### PUT  /api/meals/{mealid}/recipies/{recipieid}/comments/{commentid}
+
+Updates the description of an existing comment.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Body:
+
+```http
+{
+    "content": "MAN LABAI LABAI PATIKO"
+}
+```
+
+### Example Request:
+
+```http
+PUT http://localhost:5000/api/meals/22/recipies/9/comments/22
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 22,
+    "content": "MAN LABAI LABAI PATIKO",
+    "creationDate": "2024-12-12T17:27:01.556057Z"
+}
+```
+
+---
+
+### DELETE  /api/meals/{mealid}/recipies/{recipieid}/comments/{commentid}
+
+Deletes a specific comment.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Example Request:
+
+```http
+DELETE http://localhost:5000/api/meals/22/recipies/9/comments/22
 ```
 
 ### Response
