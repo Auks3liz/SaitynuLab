@@ -59,7 +59,193 @@ Panašaus principo wireframe pritaikomas ir kitiems kūrumo/redagavimo langams
 
 # 4.	API specifikacija
 
+## Meals
 
+### GET /api/meals
+
+Fetches a list of meals.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Parameters:
+
+| Name         | Required | Description           | Default Value | Example                                    |
+|--------------|----------|-----------------------|---------------|--------------------------------------------|
+| id           | No       | Meal ID              |               | 1                                          |
+| name         | No       | Meal name            |               | "Spaghetti"                                |
+| description  | No       | Meal description     |               | "Tasty pasta dish."                        |
+| creationDate | No       | Meal creation date   |               | "2024-12-01T10:00:00Z"                     |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals
+```
+
+### Response
+
+```http
+Status 200
+[
+    {
+        "id": 22,
+        "name": "Pizza",
+        "description": "Mamma mia, best pizza recipies here!",
+        "creationDate": "2024-12-08T13:58:10.965135Z"
+    },
+    {
+        "id": 23,
+        "name": "Soup",
+        "description": "Cold, hot, sweet or salty - all the best soup recipies here!",
+        "creationDate": "2024-12-08T13:58:46.688117Z"
+    },
+    {
+        "id": 24,
+        "name": "Lasagna",
+        "description": "All the best variants of Lasagna recipies from all across the globe",
+        "creationDate": "2024-12-08T13:58:56.524768Z"
+    },
+]
+```
+
+---
+
+### GET /api/meals/{mealId}
+
+Fetches details for a specific meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals/22
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 22,
+    "name": "Pizza",
+    "description": "Mamma mia, best pizza recipies here!",
+    "creationDate": "2024-12-08T13:58:10.965135Z"
+} 
+```
+
+---
+
+### POST /api/meals
+
+Creates a new meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Parameters:
+
+| Name         | Required | Description           | Default Value | Example                                    |
+|--------------|----------|-----------------------|---------------|--------------------------------------------|
+| name         | Yes      | Meal name            |               | "Pizza"                                    |
+| description  | Optional | Meal description     |               | "Delicious Italian pizza."                |
+
+### Example Request:
+
+```http
+POST http://localhost:5000/api/meals
+```
+
+### Response
+
+```http
+Status 201
+{
+    "id": 32,
+    "name": "Demo",
+    "description": "All the best variants of Lasagna recipies from all across the globe",
+    "creationDate": "2024-12-12T17:02:44.3073953Z"
+}
+```
+
+---
+
+### PUT /api/meals/{mealId}
+
+Updates the description of an existing meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Parameters:
+
+| Name         | Required | Description           | Default Value | Example                                    |
+|--------------|----------|-----------------------|---------------|--------------------------------------------|
+| description  | Yes      | Updated description  |               | "Updated tasty pasta dish."               |
+
+### Example Request:
+
+```http
+PUT http://localhost:5000/api/meals/32
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 32,
+    "name": "Demo",
+    "description": "very long description",
+    "creationDate": "2024-12-12T17:02:44.307395Z"
+}
+```
+
+---
+
+### DELETE /api/meals/{mealId}
+
+Deletes a specific meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Example Request:
+
+```http
+DELETE http://localhost:5000/api/meals/32
+```
+
+### Response
+
+```http
+Status 204
+{
+
+}
+```
 
 # 5. Išvados
 1. Sukurtas forum API pasinaudojant REST principais su .NET
