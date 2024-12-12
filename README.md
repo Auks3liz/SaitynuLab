@@ -11,6 +11,8 @@ Vienas iš funkcinių reikalavimų – galimybė valdyti visus tris resursus (di
 
 # 2.	Technologijų aprašymas
 Projekto ‚Frontend‘ bus kuriamas su React technologija. Duomenų bazė – PostgreSQL. Serverio pusė - naudojant .Net Core Web API
+Sistemos architektūra:
+![image](https://github.com/user-attachments/assets/6a0376ef-1b8c-471e-99a0-8cf7b1eeaaa2)
 
 # 3. 	Naudotojo sąsaja
 ## 3.1 Pagrindinis/Meal puslaptis
