@@ -72,15 +72,6 @@ Fetches a list of meals.
 | Response format         | JSON      |
 | Requires authentication | No        |
 
-### Parameters:
-
-| Name         | Required | Description           | Default Value | Example                                    |
-|--------------|----------|-----------------------|---------------|--------------------------------------------|
-| id           | No       | Meal ID              |               | 1                                          |
-| name         | No       | Meal name            |               | "Spaghetti"                                |
-| description  | No       | Meal description     |               | "Tasty pasta dish."                        |
-| creationDate | No       | Meal creation date   |               | "2024-12-01T10:00:00Z"                     |
-
 ### Example Request:
 
 ```http
@@ -157,12 +148,14 @@ Creates a new meal.
 | Response format         | JSON      |
 | Requires authentication | Yes       |
 
-### Parameters:
+### Body:
 
-| Name         | Required | Description           | Default Value | Example                                    |
-|--------------|----------|-----------------------|---------------|--------------------------------------------|
-| name         | Yes      | Meal name            |               | "Pizza"                                    |
-| description  | Optional | Meal description     |               | "Delicious Italian pizza."                |
+```http
+{
+    "name": "Demo",
+    "description": "All the best variants of Lasagna recipies from all across the globe"
+}
+```
 
 ### Example Request:
 
@@ -195,11 +188,13 @@ Updates the description of an existing meal.
 | Response format         | JSON      |
 | Requires authentication | Yes       |
 
-### Parameters:
+### Body:
 
-| Name         | Required | Description           | Default Value | Example                                    |
-|--------------|----------|-----------------------|---------------|--------------------------------------------|
-| description  | Yes      | Updated description  |               | "Updated tasty pasta dish."               |
+```http
+{
+    "description": "very long description"
+}
+```
 
 ### Example Request:
 
@@ -242,10 +237,201 @@ DELETE http://localhost:5000/api/meals/32
 
 ```http
 Status 204
-{
+```
 
+
+
+
+
+## Recipies
+
+### GET /api/meals/{mealid}/recipies
+
+Fetches a list of meals.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals/22/recipies
+```
+
+### Response
+
+```http
+Status 200
+[
+    {
+        "id": 9,
+        "name": "Cheese pizza",
+        "description": "The cheese pizza features a perfectly round, golden-brown crust, with a soft and chewy center that invites you to take a bite. The surface is generously covered with a thick, gooey layer of melted mozzarella cheese, which stretches with every slice pulled away. The cheese is evenly melted, with a slight golden hue on the edges where it has crisped up, adding texture to every bite. Its simple elegance makes the pizza look warm and comforting, with no toppings to distract from the pure, creamy cheese. The overall appearance is clean, smooth, and inviting, with a timeless appeal that promises a delightful, satisfying experience.",
+        "creationDate": "2024-12-08T14:03:05.855679Z"
+    },
+    {
+        "id": 10,
+        "name": "Mushroom pizza",
+        "description": "The mushroom pizza has a golden-brown, slightly crispy crust forming the outline of a cheerful face. The sauce, spread evenly across the pizza, gives the face a warm, inviting glow, while a layer of melted mozzarella cheese serves as the skin, bubbling and slightly browned in places for added character. Mushrooms are scattered across the pizza, resembling eyes, a nose, and even a quirky smile. A few slivers of red bell pepper or olives add a touch of detail for eyebrows, giving the face a playful, expressive look. The overall expression is one of joy, with a cheesy smile that’s sure to delight anyone who takes a bite.",
+        "creationDate": "2024-12-08T14:03:13.608262Z"
+    },
+    {
+        "id": 11,
+        "name": "Vegan pizza",
+        "description": "The vegan pizza boasts a golden-brown, crispy crust that provides the perfect base for a colorful array of plant-based toppings. A layer of creamy, dairy-free cheese stretches across the surface, offering a smooth, melty texture with slight golden-brown spots where it has crisped up. Vibrant vegetables such as red peppers, onions, mushrooms, spinach, and cherry tomatoes are scattered generously across the pizza, adding a fresh, natural burst of color and flavor. Each bite is a balance of savory, earthy, and slightly sweet flavors, with the toppings offering a satisfying contrast to the soft, slightly chewy crust. The pizza looks fresh, inviting, and full of wholesome goodness, with an appetizing combination of textures and colors that makes it both visually appealing and deliciously vegan.",
+        "creationDate": "2024-12-08T14:04:04.874429Z"
+    },
+    {
+        "id": 12,
+        "name": "Pineapple pizza",
+        "description": "The pineapple pizza features a golden, slightly crispy crust that provides a perfect foundation for its unique combination of toppings. A layer of melted mozzarella cheese blankets the surface, with pockets of gooey cheese adding a satisfying stretch. The star of the pizza, juicy pineapple chunks, are scattered evenly across the pie, their vibrant yellow color contrasting beautifully with the rich cheese and the light golden crust. The pineapple’s sweetness contrasts perfectly with the savory, slightly salty flavor of the cheese, creating a balanced and intriguing flavor profile. The edges of the crust are lightly browned, giving the pizza a rustic, inviting appearance. Each bite offers a delicious mix of sweet and savory, with a perfect balance of textures, from the soft pineapple to the crispy crust and melted cheese.",
+        "creationDate": "2024-12-08T14:04:34.126975Z"
+    }
+]
+```
+
+---
+
+### GET /api/meals/{mealid}/recipies/{recipid}
+
+Fetches details for a specific meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Example Request:
+
+```http
+GET http://localhost:5000/api/meals/22/recipies/9
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 9,
+    "name": "Cheese pizza",
+    "description": "The cheese pizza features a perfectly round, golden-brown crust, with a soft and chewy center that invites you to take a bite. The surface is generously covered with a thick, gooey layer of melted mozzarella cheese, which stretches with every slice pulled away. The cheese is evenly melted, with a slight golden hue on the edges where it has crisped up, adding texture to every bite. Its simple elegance makes the pizza look warm and comforting, with no toppings to distract from the pure, creamy cheese. The overall appearance is clean, smooth, and inviting, with a timeless appeal that promises a delightful, satisfying experience.",
+    "creationDate": "2024-12-08T14:03:05.855679Z"
 }
 ```
+
+---
+
+### POST  /api/meals/{mealid}/recipies
+
+Creates a new meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Body:
+
+```http
+{
+    "name": "Cheesy lasagna",
+    "description": "Cheesy lasagna, as the name suggests, is a variation that places extra emphasis on the cheese. While it still features the classic layers of pasta and savory meat sauce, this version is topped with an abundance of melted mozzarella and parmesan cheeses, creating a gooey, cheesy top layer. The cheese is often layered throughout the dish, making each bite extra indulgent and cheesy. The result is a lasagna that is even more decadent, with the cheese creating a stretchy, satisfying texture that complements the hearty sauce and pasta. It’s a dish that will please any cheese lover with its rich, creamy, and melt-in-your-mouth goodness."
+}
+```
+
+### Example Request:
+
+```http
+POST http://localhost:5000/api/meals/24/recipies
+```
+
+### Response
+
+```http
+Status 201
+{
+    "id": 23,
+    "name": "Cheesy lasagna",
+    "description": "Cheesy lasagna, as the name suggests, is a variation that places extra emphasis on the cheese. While it still features the classic layers of pasta and savory meat sauce, this version is topped with an abundance of melted mozzarella and parmesan cheeses, creating a gooey, cheesy top layer. The cheese is often layered throughout the dish, making each bite extra indulgent and cheesy. The result is a lasagna that is even more decadent, with the cheese creating a stretchy, satisfying texture that complements the hearty sauce and pasta. It’s a dish that will please any cheese lover with its rich, creamy, and melt-in-your-mouth goodness.",
+    "creationDate": "2024-12-12T17:18:18.8232309Z"
+}
+```
+
+---
+
+### PUT  /api/meals/{mealid}/recipies/{recipid}
+
+Updates the description of an existing meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Body:
+
+```http
+{
+    "description": "very long description"
+}
+```
+
+### Example Request:
+
+```http
+PUT http://localhost:5000/api/meals/24/recipies/23
+```
+
+### Response
+
+```http
+Status 200
+{
+    "id": 23,
+    "name": "Cheesy lasagna",
+    "description": "very long description",
+    "creationDate": "2024-12-12T17:18:18.82323Z"
+}
+```
+
+---
+
+### DELETE  /api/meals/{mealid}/recipies/{recipid}
+
+Deletes a specific meal.
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | Yes       |
+
+### Example Request:
+
+```http
+DELETE http://localhost:5000/api/meals/32
+```
+
+### Response
+
+```http
+Status 204
+```
+
+
+
+
 
 # 5. Išvados
 1. Sukurtas forum API pasinaudojant REST principais su .NET
