@@ -597,8 +597,112 @@ DELETE http://localhost:5000/api/meals/22/recipies/9/comments/22
 Status 204
 ```
 
+---
 
+## Autorizacija
 
+### POST api/register
+
+Registers new user
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Body
+```http
+{
+    "userName": "aukse123",
+    "Email": "aukse@email.com",
+    "Password": "StrongPassword1!"
+}
+```
+
+### Example Request:
+```http
+POST http://localhost:5000/api/register
+```
+
+### Response
+
+```http
+Status 201
+{
+    "userId": "643abfe3-b070-4539-9b88-a709a8219e6d",
+    "userName": "aukse123",
+    "email": "aukse@email.com"
+}
+```
+
+---
+
+### POST api/login
+
+Registers new user
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Body
+```http
+{
+    "userName": "aukse1",
+    "Password": "StrongPassword1!"
+}
+```
+
+### Example Request:
+```http
+POST http://localhost:5000/api/login
+```
+
+### Response
+
+```http
+Status 200
+{
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYXVrc2UxIiwianRpIjoiZDg2NWE1ZjAtNzliNy00YjZkLTk0NjQtNmYzYjc5ZTgxOTIwIiwic3ViIjoiN2NlYzVjN2UtMzI3OS00ODFjLWE0M2EtODhmMzJlOTdmOGNiIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiRm9ydW1Vc2VyIiwiZXhwIjoxNzM0MDI1NDY3LCJpc3MiOiJBdWtzZSIsImF1ZCI6IlRydXN0ZWRDbGllbnQifQ.T8vE7tM8A-faKhau1wJ_yW2LCyuLTfwBDOwrS6WFKGk",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxYTcwMjIyMi1hY2QzLTQ1Y2QtODBmNC04YTY3NmVlODlmN2EiLCJzdWIiOiI3Y2VjNWM3ZS0zMjc5LTQ4MWMtYTQzYS04OGYzMmU5N2Y4Y2IiLCJleHAiOjE3MzQxMTEyNjcsImlzcyI6IkF1a3NlIiwiYXVkIjoiVHJ1c3RlZENsaWVudCJ9.5HJYC7ER7FjwEk8WcDNPW0rSDx-81lM2QRE1MlfrL7E"
+}
+```
+
+---
+
+### POST api/logout
+
+Registers new user
+
+### Resource Information:
+
+| Property                | Value     |
+|-------------------------|-----------|
+| Response format         | JSON      |
+| Requires authentication | No        |
+
+### Body
+```http
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiYjJmNDU4MC03MTYzLTRiZjAtYmIyNS01NDRmN2FmYWRhNjEiLCJzdWIiOiJjZjI2MGM5NC1iMzY0LTQzM2EtYTg0ZS0yNDAxMmM4NThkYWYiLCJleHAiOjE3MzExMDUxMzIsImlzcyI6IkF1a3NlIiwiYXVkIjoiVHJ1c3RlZENsaWVudCJ9.eVWbI3vhN2eE0_lZLerxajw1ja70ltaZgLjyzqr3TeQ"
+}
+```
+
+### Example Request:
+```http
+POST http://localhost:5000/api/logout
+```
+
+### Response
+
+```http
+Status 200
+```
 
 
 # 5. Išvados
